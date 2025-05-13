@@ -1,0 +1,5 @@
+/Users/stanwancerski/pico/AP_DHCP/build/pioasm-install/pioasm/pioasm
+/Users/stanwancerski/pico/AP_DHCP/build/pioasm-install/pioasm/pioasmTargets.cmake
+/Users/stanwancerski/pico/AP_DHCP/build/pioasm-install/pioasm/pioasmTargets-release.cmake
+/Users/stanwancerski/pico/AP_DHCP/build/pioasm-install/pioasm/pioasmConfig.cmake
+/Users/stanwancerski/pico/AP_DHCP/build/pioasm-install/pioasm/pioasmConfigVersion.cmake
