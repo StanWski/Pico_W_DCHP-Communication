@@ -4,13 +4,13 @@ A minimal Wi-Fi Access Point and DHCP server for the Raspberry Pi Pico W, featur
 
 ## Overview
 
-**AP_DHCP** turns your Raspberry Pi Pico W into a standalone Wi-Fi access point with a built-in DHCP server. It also runs a lightweight HTTP server that serves a web page for user input and displays computed results. This project is ideal for embedded applications, IoT demonstrations, or educational purposes where a self-contained wireless network and web interface are required.
+**AP_DHCP** turns your Raspberry Pi Pico W into a standalone Wi-Fi access point with a built-in DHCP server. It also runs a lightweight HTTP server that serves a plain text API for user input and displays computed results. This project is ideal for embedded applications, IoT demonstrations, or educational purposes where a self-contained wireless network and web interface are required.
 
 ## Features
 
 - **Wi-Fi Access Point**: Pico W acts as a wireless AP with configurable SSID and password.
 - **DHCP Server**: Assigns IP addresses to clients connecting to the AP.
-- **Web Server**: Serves a simple HTML form for user input and displays results.
+- **Web Server**: Serves a plain text API for user input and result retrieval.
 - **LED Control**: Example endpoint to toggle the onboard LED via the web interface.
 - **C++ Implementation**: Uses lwIP, Pico SDK, and CYW43 driver for networking.
 
@@ -65,15 +65,19 @@ AP_DHCP/
 
 1. After flashing, the Pico W will start as a Wi-Fi access point (default SSID: `picow_test`, password: `9998888999`).
 2. Connect your device to this Wi-Fi network.
-3. Open a web browser and navigate to [http://192.168.4.1/](http://192.168.4.1/).
-4. Use the web form to enter values; the result will be displayed on the page.
-5. The `/ledtest` endpoint allows toggling the onboard LED.
+3. Use a web browser or HTTP client to access [http://192.168.4.1/](http://192.168.4.1/).
+4. To compute a result, send a GET request to the root endpoint with `input1` and `input2` as query parameters, e.g.:
+   ```
+   http://192.168.4.1/?input1=5&input2=10
+   ```
+   The server will respond with the result as plain text.
+5. The `/ledtest` endpoint allows toggling the onboard LED and still serves a minimal HTML page.
 
 ## Customization
 
 - **SSID and Password**: Change the `ap_name` and `password` variables in `main.cpp`.
 - **DHCP Range**: Adjust `DHCPS_BASE_IP` and `DHCPS_MAX_IP` in `dhcpserver.h`.
-- **Web Logic**: Modify `serverlogic/serverlogic.cpp` and the HTML in `main.cpp` as needed.
+- **Web Logic**: Modify `serverlogic/serverlogic.cpp` and the plain text API in `main.cpp` as needed.
 
 ## License
 
